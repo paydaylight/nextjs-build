@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  nextjs-demo:
+    stdin_open: true
+    tty: true
+    user: nextjs
+    build:
+      context: ./frontend
+      dockerfile: ../Dockerfile
+    volumes:
+      - ./frontend:/app
+      - nextjs_cache:/app/.next
+    ports:
+      - "8000:8000"
+
+volumes:
+  nextjs_cache:
